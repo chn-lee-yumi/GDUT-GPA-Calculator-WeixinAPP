@@ -1,0 +1,19 @@
+<!--pages/query/query.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="section">
+    <view class="page__title">选择要查询的学期</view>
+    <picker-view indicator-style="height: 50px;" value="{{value}}" style="width: 100%; height: 300px;" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{years}}" style="line-height: 50px;margin-left:80px;" name="xuenian">{{item}}学年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{terms}}" style="line-height: 50px" name="xueqi">{{item}}学期</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">确定</button>
+  </view>
+</form>
+<button type="normal" bindtap="logout">注销</button>
+<text>{{text}}</text>
