@@ -2,12 +2,12 @@
 <form bindsubmit="formSubmit">
   <view class="section">
     <view class="page__title">选择要查询的学期</view>
-    <picker-view indicator-style="height: 50px;" value="{{value}}" style="width: 100%; height: 300px;" bindchange="bindChange">
+    <picker-view indicator-style="height: 30px;" value="{{value}}" style="width: 100%; height: 120px;" bindchange="bindChange">
       <picker-view-column>
-        <view wx:for="{{years}}" style="line-height: 50px;margin-left:80px;" name="xuenian">{{item}}学年</view>
+        <view wx:for="{{years}}" style="line-height: 30px;margin-left:80px;" name="xuenian">{{item}}学年</view>
       </picker-view-column>
       <picker-view-column>
-        <view wx:for="{{terms}}" style="line-height: 50px" name="xueqi">{{item}}学期</view>
+        <view wx:for="{{terms}}" style="line-height: 30px" name="xueqi">{{item}}学期</view>
       </picker-view-column>
     </picker-view>
   </view>
@@ -17,3 +17,4 @@
 </form>
 <button type="normal" bindtap="logout">注销</button>
 <text>{{text}}</text>
+<text class="page__desc">\n本程序为开源项目，仓库地址：\nhttps://github.com/chn-lee-yumi/GDUT-GPA-Calculator-WeixinAPP</text>

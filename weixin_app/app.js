@@ -1,3 +1,8 @@
+/*!
+ * GDUT绩点计算器 v1.0.4 (https://github.com/chn-lee-yumi/GDUT-GPA-Calculator-WeixinAPP)
+ * Copyright chn-lee-yumi
+ * Licensed under the GPLv3 license
+ */
 //app.js
 var hotapp = require('utils/hotapp.js');
 hotapp.wxlogin(function (openID) {})

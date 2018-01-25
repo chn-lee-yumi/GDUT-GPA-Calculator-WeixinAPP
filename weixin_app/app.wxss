@@ -1,3 +1,16 @@
+page{
+    background-color: #F8F8F8;
+}
+
+
+.page__desc {
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+
+
 /*!
  * WeUI v1.1.1 (https://github.com/weui/weui-wxss)
  * Copyright 2017 Tencent, Inc.

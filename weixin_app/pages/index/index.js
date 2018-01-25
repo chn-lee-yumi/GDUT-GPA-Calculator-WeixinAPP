@@ -5,6 +5,8 @@
 var hotapp = require('../../utils/hotapp.js');
 var openid = hotapp.getOpenID();
 var yzm_t = Date.parse(new Date());
+var server_url = "https://api.gcc.ac.cn"
+
 Page({
 
   /**
@@ -20,9 +22,9 @@ Page({
   formSubmit: function (e) {
     var that = this;
     console.log(e.detail.value["account"], e.detail.value["pwd"]);
-    hotapp.request({
+    wx.request({
       useProxy: true,
-      url: 'http://139.129.20.107:8081/login', // 需要代理请求的网址
+      url: server_url +'/login', // 需要代理请求的网址
       data: {
         wxid: openid,
         account: e.detail.value["account"],
@@ -46,9 +48,9 @@ Page({
             showCancel: false,
             success: function (res) {
               //刷新验证码
-              hotapp.request({
+              wx.request({
                 useProxy: true,
-                url: 'http://139.129.20.107:8081/',
+                url: server_url,
                 data: {
                   wxid: openid
                 },
@@ -57,7 +59,8 @@ Page({
                 },
                 complete: function (res) {
                   console.log(res.data);
-                  that.setData({ imgsrc: 'http://139.129.20.107:8081' + res.data +'?t='+yzm_t})
+                  that.setData({
+                    imgsrc: server_url + res.data + '?t=' + yzm_t })
                   yzm_t++
                 }
               })
@@ -75,9 +78,9 @@ Page({
     var that=this;
     //获取验证码
     console.log(openid)
-    hotapp.request({
+    wx.request({
       useProxy: true,
-      url: 'http://139.129.20.107:8081/',
+      url: server_url,
       data: {
         wxid: openid
       },
@@ -85,8 +88,8 @@ Page({
         'content-type': 'application/json'
       },
       complete: function (res) {
-        console.log(res.data);
-        that.setData({ imgsrc: 'http://139.129.20.107:8081' + res.data + '?t=' + yzm_t })
+        console.log(res.data);//res.data是验证码的url
+        that.setData({ imgsrc: server_url + res.data + '?t=' + yzm_t })
         yzm_t++
       }
     })

@@ -3,11 +3,13 @@ var hotapp = require('../../utils/hotapp.js');
 var openid = hotapp.getOpenID();
 
 const years = []
-const terms = ['01', '02']
+const terms = ['所有','第一', '第二']
 for (let i = 2010; i <= 2020; i++) {
   years.push(i)
 }
-var xueqi='201601'
+var xueqi='00'
+var xuenian ='2017'
+var server_url ="https://api.gcc.ac.cn"
 
 Page({
 
@@ -17,7 +19,7 @@ Page({
   data: {
     years: years,
     terms: terms,
-    value: [6, 0],
+    value: [7, 0],
     text: '本学期平均学分绩点：'
   },
 
@@ -27,16 +29,17 @@ Page({
   */
   formSubmit: function (e) {
     var that = this;
-    console.log(xueqi);
+    console.log(xueqi,xuenian);
     that.setData({
       text: '本学期平均学分绩点：正在查询……'
     })
-    hotapp.request({
+    wx.request({
       useProxy: true,
-      url: 'http://139.129.20.107:8081/calc',
+      url: server_url+'/calc',
       data: {
         wxid: openid,
-        xueqi: xueqi
+        xueqi: xueqi,
+        xuenian:xuenian
       },
       header: {
         'content-type': 'application/json'
@@ -57,14 +60,15 @@ Page({
   },
 
   bindChange: function (e) {
-    xueqi = e.detail.value[0] + 2010 + '0' + (e.detail.value[1] + 1)
+    xuenian = e.detail.value[0] + 2010 
+    xueqi ='0' + (e.detail.value[1])
   },
 
   //注销
   logout:function(){
-    hotapp.request({
+    wx.request({
       useProxy: true,
-      url: 'http://139.129.20.107:8081/logout',
+      url: server_url +'/logout',
       data: {
         wxid: openid
       },

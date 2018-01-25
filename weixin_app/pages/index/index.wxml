@@ -31,6 +31,7 @@
     </view>
   </view>
   <view class="btn-area">
-    <button formType="submit" type="primary">登录</button>
+    <button formType="submit" class="weui-btn" type="primary">登录</button>
   </view>
 </form>
+<text class="page__desc">本程序为开源项目，仓库地址：\nhttps://github.com/chn-lee-yumi/GDUT-GPA-Calculator-WeixinAPP</text>
